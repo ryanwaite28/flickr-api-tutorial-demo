@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flickr API</title>
+
+    <style media="screen">
+      #pictures-ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        margin: 2px;
+        padding: 2px;
+      }
+      #pictures-ul > li {
+        list-style: none;
+        width: 350px;
+        max-width: 100%;
+        padding: 3px;
+        margin: 3px;
+      }
+      #pictures-ul > li > img{
+        width: 100%;
+        padding: 3px;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        /*
+          Run this when the page loads,
+          which also serves as a closure to not pollute the global scope.
+        */
+
+        let api_key = '3909720ecbeba83d318a1dd0a7578f03';
+        let photos_list = [];
+
+        // where pictures will be put in the DOM
+        let picturesUL = document.getElementById('pictures-ul');
+        // a submit button to fire the search function
+        let submitBtn = document.getElementById('submit-query');
+        submitBtn.addEventListener('click', searchPhotos);
+
+        function searchPhotos() {
+          // let's say we had an input that allows users to search for photos by tag
+          let input = document.getElementById('query-input');
+          if(!input) {
+            return console.log('element not found');
+          }
+          let query = input.value;
+          if(query === '') {
+            return alert('input cannot be blank');
+          }
+
+
+
+          // define the callback BEFORE you make the request
+          window.jsonFlickrApi = function(json){
+            // do stuff
+            photos_list = [];
+            picturesUL.innerHTML = '';
+
+            for(let photo of json.photos.photo) {
+                var title = photo.title;
+                var farm = photo.farm;
+                var id = photo.id;
+                var owner = photo.owner;
+                var secret = photo.secret;
+                var server = photo.server;
+                var isFamily = photo.isfamily;
+                var isFriend = photo.isfriend;
+                var isPublic = photo.ispublic;
+
+                var img = 'https://farm' + farm + '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg';
+
+                photos_list.push({
+                  title: title,
+                  img: img,
+                  owner: owner,
+                });
+
+                picturesUL.innerHTML += '<li><img alt="' + title + ' - ' + owner + '" src="' + img + '"/></li>';
+            }
+
+            console.log(json);
+            console.log(photos_list);
+
+            // then when you are done, clear the callback
+            window.jsonFlickrApi = null;
+            // or this way:
+            delete window.jsonFlickrApi
+          }
+
+          var flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + api_key + '&tags=' + query + '&format=json&callback=?';
+
+          $.ajax({
+            url: flickrAPI,
+            dataType: 'jsonp',
+            success: function(resp) {
+              console.log(resp)
+            }
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+
+    <h2>Flickr API</h2>
+
+    <input id="query-input" type="text" placeholder="enter a query"/>
+    <input id="submit-query" type="button" value="search"/>
+
+    <br/>
+    <br/>
+
+    <ul id="pictures-ul"></ul>
+
+  </body>
+</html>

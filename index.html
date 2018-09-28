@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flickr Tutorial & Example</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="icon" type="image/jpg" href="pf.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="knockout.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Flickr API</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h2 class="text-center">Tutorial & Example</h2>
+          <h4 class="text-center">
+            This is a tutorial on how to use the Flickr API, mainly the <strong>flickr.photos.search</strong> service. <br/>
+            As of: 9/28/2018
+          </h4>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="row">
+        <div class="col s12">
+          <h5 class="">Getting Started</h5>
+          <p>First, sign up for the Flickr API <a title="Flickr API Sign Up" href="https://www.flickr.com/services/apps/create/">here</a>.</p>
+          <p>Then create an app to get your API Key. Last i checked, i think Flickr uses yahoo to sign up and sign in.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <h5 class="">Testing an API Service</h5>
+          <p>
+            Once you have your API Key, you can use many of the flickr services, like <strong><code>flickr.photos.search</code></strong>. Here is an example of a request URL for that service: </p>
+            <div class="well">
+              <p><code>https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=<strong>{Key}</strong>&tags=<strong>{QUERY}</strong>&format=json&callback=?</code>.</p>
+              <p>Where {Key} is your actual API Key and {QUERY} is a term used to search for photos by tag. For Example:</p>
+              <p><code>https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1a2b3cj&tags=nature&format=json&callback=?</code></p>
+              <p>Read the <a title="documentation on flickr.photos.search" href="https://www.flickr.com/services/api/flickr.photos.search.html">documentation</a> for more details on the url parameters</p>
+            </div>
+            <p>You can see all of the API services <a title="Flickr API Services" href="https://www.flickr.com/services/api/">here</a>.</p>
+          </p>
+          <p>
+            Once you found a service you want to use, try it out in the browser on a new tab!
+            For Example, once you created a request url (like the one above), paste it in the browser's the search bar and hit enter.
+            Here is an example response from the <code>flickr.photos.search</code>:
+          </p>
+          <ul class="collapsible">
+            <li>
+              <div class="collapsible-header"><strong>Sample Response</strong>&nbsp;(Click to show/hide)</div>
+              <div class="collapsible-body">
+                <span class="wrap-text-word">
+                  jsonFlickrApi({"photos":{"page":1,"pages":3949,"perpage":100,"total":"394827","photo":[{"id":"43157033980","owner":"44206268@N07","secret":"e1f6824137","server":"1901","farm":2,"title":"***","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920564272","owner":"138678777@N07","secret":"4eacb311eb","server":"1965","farm":2,"title":"the black and white way","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31096191288","owner":"58140394@N04","secret":"7c3f3c5c46","server":"1937","farm":2,"title":"An alien landscape.","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249832574","owner":"148466791@N05","secret":"23abea6dea","server":"1925","farm":2,"title":"Pinned to Painted by NATURE \u2665 on Pinterest","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31096174328","owner":"148466791@N05","secret":"73059d24fa","server":"1935","farm":2,"title":"Pinned to Painted by NATURE \u2665 on Pinterest","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249828584","owner":"14665421@N00","secret":"7cb5a46832","server":"1958","farm":2,"title":"Harvest Has Come","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30032314297","owner":"120533227@N06","secret":"676377c57c","server":"1953","farm":2,"title":"KV4A0785  7-prikket Marieh\u00f8ne - Ladybird - Coccinella 7-punctatafra haven, from our garden, K\u00f8benhavn - DK","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31096153848","owner":"161153967@N06","secret":"7c65599693","server":"1974","farm":2,"title":"\u7d05\u51a0\u6c34\u96de (Gallinula chloropus)","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44969048801","owner":"31791237@N02","secret":"85472dfd38","server":"1964","farm":2,"title":"My way!","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44937213751","owner":"50121543@N07","secret":"0cfe2db8f0","server":"1925","farm":2,"title":"\u0391\u03c1\u03c7\u03bf\u03bd\u03c4\u03b9\u03ba\u03cc \u03c3\u03c4\u03b7\u03bd \u0386\u03bd\u03c9 \u039a\u03cc\u03bd\u03b9\u03c4\u03c3\u03b1 Mansion house at Uper Konitsa","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31096056918","owner":"159322015@N03","secret":"14b313be4e","server":"1918","farm":2,"title":"Girl in Sant Pere","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920411162","owner":"66855284@N03","secret":"599247312b","server":"1903","farm":2,"title":"Minor Obstruction (p)","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920402822","owner":"28273298@N04","secret":"e0df2c0c83","server":"1973","farm":2,"title":"Rain Clouds Tapiutan Strait, El Nido, Matinloc Island, Philippines","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30032160537","owner":"31791237@N02","secret":"53d8b3510f","server":"1959","farm":2,"title":"Gentle touch of light!","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968942101","owner":"7366969@N02","secret":"f055dcc5fa","server":"1938","farm":2,"title":"Kilimanjaro Safaris","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156796360","owner":"78683307@N04","secret":"e75c6dabf2","server":"1925","farm":2,"title":"\u5922\u8c37\u7011\u5e03","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056745525","owner":"31791237@N02","secret":"2e7798e72e","server":"1961","farm":2,"title":"The last one!","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156779340","owner":"68539663@N00","secret":"c5ef909375","server":"1927","farm":2,"title":"julkastro-7761","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968925791","owner":"133384232@N03","secret":"1845b444d0","server":"1904","farm":2,"title":"Gannet","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056714895","owner":"156214754@N03","secret":"8d3704b8ac","server":"1938","farm":2,"title":"_IGP0798_DxO","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156759020","owner":"31791237@N02","secret":"7113645611","server":"1922","farm":2,"title":"To the light!","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30032086807","owner":"53596679@N04","secret":"1f0bb6bd6b","server":"1965","farm":2,"title":"Fence in the dark woodland","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968891891","owner":"31791237@N02","secret":"35c6572af0","server":"1965","farm":2,"title":"Shadow play","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056681065","owner":"127195984@N07","secret":"606614f6ac","server":"1912","farm":2,"title":"Into the light","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30032051517","owner":"45747055@N03","secret":"c8ecc858da","server":"1966","farm":2,"title":"Wet, Wet","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249516464","owner":"50615476@N03","secret":"40e9f6ce58","server":"1938","farm":2,"title":"Poecilasthena thalassias","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249407234","owner":"68539663@N00","secret":"90956462c1","server":"1943","farm":2,"title":"julkastro-7810","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031940667","owner":"68539663@N00","secret":"4920d8d48f","server":"1902","farm":2,"title":"julkastro-7801","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968746561","owner":"68539663@N00","secret":"35e36ce152","server":"1928","farm":2,"title":"julkastro-7800","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920180082","owner":"68539663@N00","secret":"60834103a7","server":"1928","farm":2,"title":"julkastro-7797","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31095745088","owner":"68539663@N00","secret":"8158b33b0c","server":"1928","farm":2,"title":"julkastro-7796","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249378064","owner":"68539663@N00","secret":"c7ffeecac5","server":"1938","farm":2,"title":"julkastro-7789","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31095734828","owner":"68539663@N00","secret":"fc48fcda32","server":"1926","farm":2,"title":"julkastro-7780","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249362964","owner":"68539663@N00","secret":"361fa7c99b","server":"1912","farm":2,"title":"julkastro-7776","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249356504","owner":"68539663@N00","secret":"751e4b026f","server":"1933","farm":2,"title":"julkastro-7773","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249347154","owner":"68539663@N00","secret":"253d35e3a5","server":"1957","farm":2,"title":"julkastro-7757","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249336834","owner":"68539663@N00","secret":"3dd2439866","server":"1906","farm":2,"title":"julkastro-7768","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056466735","owner":"68539663@N00","secret":"292cea4456","server":"1941","farm":2,"title":"julkastro-7760","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056460705","owner":"68539663@N00","secret":"ba37fb8303","server":"1940","farm":2,"title":"julkastro-7759","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056453135","owner":"68539663@N00","secret":"3bf20d13a6","server":"1933","farm":2,"title":"julkastro-7758","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249309434","owner":"68539663@N00","secret":"5226f6b5e2","server":"1954","farm":2,"title":"julkastro-7756","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920116782","owner":"68539663@N00","secret":"81af6270a1","server":"1922","farm":2,"title":"julkastro-7751","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056420265","owner":"68539663@N00","secret":"217516bb40","server":"1916","farm":2,"title":"julkastro-7748","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968672391","owner":"68539663@N00","secret":"303095743f","server":"1938","farm":2,"title":"julkastro-7745","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056407125","owner":"68539663@N00","secret":"c4c7221a9f","server":"1949","farm":2,"title":"julkastro-7744","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056398605","owner":"68539663@N00","secret":"4a7d2f4c16","server":"1934","farm":2,"title":"julkastro-7740","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968651851","owner":"68539663@N00","secret":"aef73e4ee8","server":"1951","farm":2,"title":"julkastro-7734","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056390215","owner":"68539663@N00","secret":"d6283860cd","server":"1968","farm":2,"title":"julkastro-7733","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056385515","owner":"68539663@N00","secret":"3ec0388bf0","server":"1931","farm":2,"title":"julkastro-7730","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968633831","owner":"68539663@N00","secret":"52ee485280","server":"1929","farm":2,"title":"julkastro-7728","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031836567","owner":"68539663@N00","secret":"e7c689cc07","server":"1936","farm":2,"title":"julkastro-7727","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031832847","owner":"68539663@N00","secret":"10c8e3e911","server":"1966","farm":2,"title":"julkastro-7725","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968623121","owner":"68539663@N00","secret":"ce20a58915","server":"1975","farm":2,"title":"julkastro-7724","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249227084","owner":"68539663@N00","secret":"627a1f6c08","server":"1969","farm":2,"title":"julkastro-7722","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920058152","owner":"68539663@N00","secret":"e0029eb086","server":"1969","farm":2,"title":"julkastro-7723","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031801707","owner":"68539663@N00","secret":"d75bed8320","server":"1974","farm":2,"title":"julkastro-7721","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031796757","owner":"68539663@N00","secret":"0b05441edc","server":"1903","farm":2,"title":"julkastro-7720","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920030622","owner":"68539663@N00","secret":"2dbacb7f25","server":"1945","farm":2,"title":"julkastro-7714","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249201514","owner":"68539663@N00","secret":"da6c90801f","server":"1964","farm":2,"title":"julkastro-7712","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249194634","owner":"68539663@N00","secret":"441e6f188c","server":"1951","farm":2,"title":"julkastro-7711","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920017682","owner":"68539663@N00","secret":"69f6010bbd","server":"1969","farm":2,"title":"julkastro-7709","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056303635","owner":"68539663@N00","secret":"1fd08b98d3","server":"1908","farm":2,"title":"julkastro-7706","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968548191","owner":"68539663@N00","secret":"acfda528fe","server":"1976","farm":2,"title":"julkastro-7703","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44919999732","owner":"68539663@N00","secret":"3899cdfaea","server":"1907","farm":2,"title":"julkastro-7702","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056285015","owner":"68539663@N00","secret":"1e2f2ed5f1","server":"1912","farm":2,"title":"julkastro-7701","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031729377","owner":"68539663@N00","secret":"5cb2e8ecf5","server":"1941","farm":2,"title":"julkastro-7699","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156258390","owner":"50615476@N03","secret":"40bb4f9f34","server":"1942","farm":2,"title":"Idaea","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249142464","owner":"68539663@N00","secret":"dc69aae019","server":"1935","farm":2,"title":"julkastro-7697","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249135244","owner":"68539663@N00","secret":"0583b2250a","server":"1914","farm":2,"title":"julkastro-7693","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44919961382","owner":"68539663@N00","secret":"67827644dd","server":"1904","farm":2,"title":"julkastro-7689","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249113754","owner":"68539663@N00","secret":"212622d595","server":"1939","farm":2,"title":"julkastro-7687","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056240505","owner":"68539663@N00","secret":"d050cd51b2","server":"1966","farm":2,"title":"julkastro-7681","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056235745","owner":"68539663@N00","secret":"35b5e4edda","server":"1950","farm":2,"title":"julkastro-7679","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056231105","owner":"68539663@N00","secret":"4c6b82a101","server":"1935","farm":2,"title":"julkastro-7677","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056226535","owner":"68539663@N00","secret":"0714c3e638","server":"1907","farm":2,"title":"julkastro-7673","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44919926482","owner":"68539663@N00","secret":"0d2a7624e8","server":"1972","farm":2,"title":"julkastro-7670","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156220370","owner":"68539663@N00","secret":"fd0f4d562b","server":"1924","farm":2,"title":"julkastro-7656","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31095470288","owner":"68539663@N00","secret":"9ffa9a3155","server":"1901","farm":2,"title":"julkastro-7698","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156194560","owner":"68539663@N00","secret":"63e29ed417","server":"1954","farm":2,"title":"julkastro-7639","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031663687","owner":"68539663@N00","secret":"2bab5174d4","server":"1956","farm":2,"title":"julkastro-7664","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031657307","owner":"68539663@N00","secret":"965c5967aa","server":"1968","farm":2,"title":"julkastro-7628","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44968447831","owner":"68539663@N00","secret":"b67339110a","server":"1969","farm":2,"title":"julkastro-7627","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031646047","owner":"68539663@N00","secret":"4aa94bc21a","server":"1932","farm":2,"title":"julkastro-7625","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44919865252","owner":"68539663@N00","secret":"1384619d04","server":"1910","farm":2,"title":"julkastro-7623","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31095440948","owner":"68539663@N00","secret":"c9b61fa44a","server":"1950","farm":2,"title":"julkastro-7617","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031631267","owner":"68539663@N00","secret":"46e935a673","server":"1968","farm":2,"title":"julkastro-7604","ispublic":1,"isfriend":0,"isfamily":0},{"id":"31095427308","owner":"68539663@N00","secret":"27a944bce0","server":"1960","farm":2,"title":"julkastro-7602","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156149930","owner":"68539663@N00","secret":"2064c7d341","server":"1961","farm":2,"title":"julkastro-7599","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44056123035","owner":"68539663@N00","secret":"c54b6be0ce","server":"1945","farm":2,"title":"julkastro-7596","ispublic":1,"isfriend":0,"isfamily":0},{"id":"43156144030","owner":"68539663@N00","secret":"2cd4798444","server":"1912","farm":2,"title":"julkastro-7590","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031612907","owner":"68539663@N00","secret":"046a242e9d","server":"1977","farm":2,"title":"julkastro-7593","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44919830982","owner":"68539663@N00","secret":"fdfb2f4434","server":"1920","farm":2,"title":"julkastro-7586","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031599607","owner":"68539663@N00","secret":"96dd30454a","server":"1967","farm":2,"title":"julkastro-7588","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30031594007","owner":"68539663@N00","secret":"b07770a9a4","server":"1904","farm":2,"title":"julkastro-7579","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44248985524","owner":"68539663@N00","secret":"ba11481512","server":"1940","farm":2,"title":"julkastro-7581","ispublic":1,"isfriend":0,"isfamily":0},{"id":"30032030847","owner":"27351229@N04","secret":"e300fa200a","server":"1946","farm":2,"title":"Autumn forest and sunrise","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44249533184","owner":"31791237@N02","secret":"9f92e48f6e","server":"1911","farm":2,"title":"A beesy day!","ispublic":1,"isfriend":0,"isfamily":0},{"id":"44920265082","owner":"53400673@N08","secret":"b7a73db055","server":"1902","farm":2,"title":"The Path to the Mountains","ispublic":1,"isfriend":0,"isfamily":0}]},"stat":"ok"})
+                </span>
+              </div>
+            </li>
+          </ul>
+          <!-- <div class="well wrap-text-word">
+            <p>
+
+            </p>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <h5 class="">Using the API</h5>
+          <p>
+            For this service in particular, the response is actually in <em><strong>jsonp</strong></em>, not <strong>JSON</strong>.
+            This is why we need that <strong>callback</strong> parameter in the request url.
+            The value of that can be left as a simple question mark, like so: <code>callback=?</code>.
+            jQuery is highly recommended for making and dealing with jsonp requests/responses.
+          </p>
+          <p>
+            If you look at the beginning of the response, you see text that looks like an identifier -- <strong>jsonFlickrApi</strong>. <br/>
+            <small>Note: identifier is another word for function or variable name.</small>
+          </p>
+          <p>
+            <em>YOU</em> have to create that function, in the global scope, so the jsonp callback can call it when the response comes.
+            When that function gets called, it passes the acutal json object to that function. From there, you can do whatever you want with the data.
+          </p>
+          <p>
+            A good idea is to destroy that callback once you are finished with it. By destroy, i mean set that identifier's value to <code>null</code>.
+            That way, it can't be used again. That will help make your app secure by stopping anyone from going into the console and calling it over and over.
+          </p>
+          <p>
+            In the response, you'll notice that there aren't any direct urls for the images. However, the properties has the data needed to make the url. YOU will have to construct them.
+          </p>
+          <p>
+            Here is the format.
+          </p>
+          <p><code>var img = 'https://farm' + farm + '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg';</code></p>
+          <p>That is it! So here is a full example that you can test out here: <a title="Full Example" href="sandbox.html">sandbox</a></p>
+          <p>You can even copy the code i made: </p>
+          <div class="well">
+            <pre id="html-text">
+document.addEventListener('DOMContentLoaded', function(){
+  /*
+    Run this when the page loads,
+    which also serves as a closure to not pollute the global scope.
+  */
+
+  let api_key = 'your_key';
+  let photos_list = [];
+
+  // where pictures will be put in the DOM
+  let picturesUL = document.getElementById('pictures-ul');
+  // a submit button to fire the search function
+  let submitBtn = document.getElementById('submit-query');
+  submitBtn.addEventListener('click', searchPhotos);
+
+  function searchPhotos() {
+    // let's say we had an input that allows users to search for photos by tag
+    let input = document.getElementById('query-input');
+    if(!input) {
+      return console.log('element not found');
+    }
+    let query = input.value;
+    if(query === '') {
+      return alert('input cannot be blank');
+    }
+
+
+
+    // define the callback BEFORE you make the request
+    window.jsonFlickrApi = function(json){
+      // do stuff
+      photos_list = [];
+      picturesUL.innerHTML = '';
+
+      for(let photo of json.photos.photo) {
+          var title = photo.title;
+          var farm = photo.farm;
+          var id = photo.id;
+          var owner = photo.owner;
+          var secret = photo.secret;
+          var server = photo.server;
+          var isFamily = photo.isfamily;
+          var isFriend = photo.isfriend;
+          var isPublic = photo.ispublic;
+
+          var img = 'https://farm' + farm + '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg';
+
+          photos_list.push({
+            title: title,
+            img: img,
+            owner: owner,
+          });
+
+          picturesUL.innerHTML += '< li >< img alt="' + title + ' - ' + owner + '" src="' + img + '" >< / li >';
+      }
+
+      console.log(json);
+      console.log(photos_list);
+
+      // then when you are done, clear the callback
+      window.jsonFlickrApi = null;
+      // or this way:
+      delete window.jsonFlickrApi
+    }
+
+    var flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + api_key + '&tags=' + query + '&format=json&callback=?';
+
+    $.ajax({
+      url: flickrAPI,
+      dataType: 'jsonp',
+      success: function(resp) {
+        console.log(resp)
+      }
+    });
+  }
+});
+            </pre>
+          </div>
+          <p>For React users: here is a utility function version:</p>
+          <div class="well">
+            <p>
+              Make sure you have jQuery loaded into the browser.
+              In your react app, add a script to the <code>public/index.html</code> with this src:
+              <strong>https://code.jquery.com/jquery-3.3.1.min.js</strong>
+            </p>
+            <p>Now, let's say you had a file called utils.js in your <code>src</code> folder</p>
+            <p>Add this function: </p>
+            <pre>
+export function getFlickrPhotos(query) {
+  return new Promise(function(resolve, reject){
+    window.jsonFlickrApi = function(json){
+      let photos_list = [];
+
+      for(let photo of json.photos.photo) {
+        var farm = photo.farm;
+        var id = photo.id;
+        var secret = photo.secret;
+        var server = photo.server;
+
+        var img = 'https://farm' + farm + '.staticflickr.com/' + server +
+        '/' + id + '_' + secret + '.jpg';
+
+        let Photo = Object.assign({}, photo, { img: img });
+
+        photos_list.push(Photo);
+      }
+
+      resolve(photos_list);
+
+      delete window.jsonFlickrApi;
+    }
+
+    var flickrAPI = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' +
+    your_key + '&tags=' + query + '&format=json&callback=?';
+
+    window.$.ajax({
+      url: flickrAPI,
+      dataType: 'jsonp',
+      success: function(resp) {
+        console.log(resp);
+      }
+    });
+  });
+}
+            </pre>
+
+            <br/>
+
+            <p>Now you can import that into other files. For example: </p>
+            <pre>
+import React, { Component } from 'react';
+import { getFlickrPhotos } from './utils';
+
+class App extends Component {
+  state = {
+    photos_list: []
+  }
+
+  componentWillMount() {
+    getFlickrPhotos('garden').then(photos_list => {
+      this.setState({ photos_list });
+    });
+  }
+
+  render() {
+    return (
+      < ul >
+        {
+          this.state.photos_list.map((photo, key) => (
+            < li key={key}>
+              < img alt={photo.title + ' - ' + photo.owner} src={photo.img} / >
+            < / li >
+          ));
+        }
+      < / ul >
+    );
+  }
+}
+
+export default App;
+            </pre>
+          </div>
+          <p>All you have to do is replace the <code>api_key</code> variable with your actual key</p>
+          <p>Enjoy :)</p>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="row">
+        <div class="col s12">
+          <h2 class="text-center">Example</h2>
+          <h3 class="text-center">Flickr Photos - <span data-bind="text: query"></span></h3>
+          <ul id="pictures-ul" data-bind="foreach: photos_list">
+            <li>
+              <img data-bind="attr: { src: $data.img, alt: $data.title + ' - ' + $data.owner }"/>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
